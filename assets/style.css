@@ -41,7 +41,7 @@
   padding: 10px;
 }
 
-#list-item {
+.list-item {
   background-color: aqua;
   display: block;
   text-align: center;
@@ -64,4 +64,8 @@
 .btn-flex {
   display: flex;
   justify-content: flex-end;
+}
+
+#quiz-box {
+  display: none;
 }
