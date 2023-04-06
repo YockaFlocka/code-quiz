@@ -9,12 +9,29 @@
   </head>
 
   <body>
-    <div class="start-screen">
-			<h1 class="start-title">Press Start to begin your coding quiz!</h1>
+    <section id="start-screen">
+      <div class="start-title">Press Start to begin your coding quiz!</div>
       <button id="start-button">Start</button>
-    </div>
-		
-    
+    </section>
+    <main>
+      <section>
+        <div id="quiz-box">
+          <h2 id="question1">What is your favorite food?</h2>
+          <div id="timer">
+            <p></p>
+          </div>
+          <ul id="answers">
+            <li id="list-item">Pizza</li>
+            <li id="list-item">Ice Cream</li>
+            <li id="list-item">Gushers</li>
+            <li id="list-item">None of the above</li>
+          </ul>
+          <div class="btn-flex">
+            <button id="next-button">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <script src="./assets/script.js"></script>
   </body>
