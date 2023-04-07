@@ -39,7 +39,8 @@ var countdown;
 var questionCounter = 0;
 var ansCounter = 0;
 
-
+var winCounter = 0;
+var lossCounter = 0;
 
 // function to decrement the timer and lose when it hits 0
 function startTimer() {
@@ -53,25 +54,41 @@ function startTimer() {
   }, 1000)
 }
 
+  // removes the previous answer items
+  function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild)
+    }
+  }
 
-function checkAnswer() {
+
+function checkAnswer(event) {
   // validate answer
-
-  // increment questionCounter/answerCounter
-
-  // are the questions done? (if-else)
+  var correctAnswer = questions[questionCounter].answer;
+  if (event.target.textContent === correctAnswer) {
+    winCounter++;
+  } else {
+    lossCounter++;
+  }
+  console.log(event.target.textContent)   // answer user clicks on
+  console.log(correctAnswer);   // correct answer
+  
+  // increment questionCounter and removes previous answer elements
+  questionCounter++;
+  removeAllChildNodes(answersEl);
+  // If there are no more questions: (if-else)
 
   // run generateQuestion() again
-
-  console.log("test")
+  generateQuestion();
 }
 
 
 function generateQuestion() {
-  // generates the current question
+  // generate the current question
   var currentQuestion = questions[questionCounter];
   var choicesTitle = currentQuestion.q;
   quizTitleEl.textContent = choicesTitle;
+  
   // generate the possible answers
   for (let i = 0; i < currentQuestion.choices.length; i++) {
     var temp = document.createElement("li");
@@ -97,14 +114,6 @@ function endGame() {
 }
 
 
-
-// event listener for the next-button to go to next question and answers
-// document.getElementById("next-button").addEventListener("click", function() {
-//   questionCounter++;
-//   ansCounter++;
-//   document.getElementById("question-title").innerHTML = qList[questionCounter].q;
-//   document.getElementById("list-item").innerHTML = qList[ansCounter].aOne;
-// })
 
 // event listener for the start button
 startButtonEl.addEventListener("click", function() {
