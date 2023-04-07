@@ -69,3 +69,22 @@
 #quiz-box {
   display: none;
 }
+
+#hiScore-page {
+  display: none;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: bisque;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.initialsForm {
+  padding: 10px;
+}

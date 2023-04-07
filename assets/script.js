@@ -49,7 +49,7 @@ function startTimer() {
     timerCountEl.textContent = "Time Remaining: " + secondsRemaining;
     if (secondsRemaining === 0) {
       clearInterval(countdown);
-      // endGame();
+      endGame();
     }
   }, 1000)
 }
@@ -70,16 +70,18 @@ function checkAnswer(event) {
   } else {
     lossCounter++;
   }
-  console.log(event.target.textContent)   // answer user clicks on
-  console.log(correctAnswer);   // correct answer
+  // console.log(event.target.textContent)   // answer user clicks on
+  // console.log(correctAnswer);   // correct answer
   
   // increment questionCounter and removes previous answer elements
   questionCounter++;
   removeAllChildNodes(answersEl);
   // If there are no more questions: (if-else)
-
-  // run generateQuestion() again
-  generateQuestion();
+  if (questions[questionCounter] === undefined) {
+    endGame();
+  } else {
+    generateQuestion();
+  } 
 }
 
 
@@ -108,9 +110,11 @@ function startQuiz() {
   startTimer();
 }
 
-
+// switch to hi-score screen
 function endGame() {
-
+  document.getElementById("quiz-box").style.display = "none";
+  document.getElementById("hiScore-page").style.display = "block";
+  
 }
 
 
