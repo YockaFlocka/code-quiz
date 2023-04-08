@@ -30,7 +30,7 @@ THEN I can save my initials and my score
 
 The following link will lead you to a live version of the webpage:
 
-![Coding Quiz]()
+![Coding Quiz](https://yockaflocka.github.io/code-quiz/)
 
 Here is a screenshot of the Quiz!
 
