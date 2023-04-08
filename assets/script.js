@@ -2,6 +2,8 @@ var startButtonEl = document.querySelector("#start-button");
 var quizTitleEl = document.querySelector("#question-title");
 var answersEl = document.querySelector('#answers');
 var timerCountEl = document.querySelector('.timer-count');
+var hiScoreEl = document.querySelector('.hiScore-score')
+var initFormEl = document.querySelector('#formInput');
 
 // Array of objects that holds the questions, choices, and answer
 var questions = [
@@ -32,8 +34,8 @@ var questions = [
   }
 ]
 
-
-var secondsRemaining = 5;
+// global variables
+var secondsRemaining = 50;
 var countdown;
 
 var questionCounter = 0;
@@ -42,12 +44,20 @@ var ansCounter = 0;
 var winCounter = 0;
 var lossCounter = 0;
 
+var save;
+var newSave;
+
+var usernameInput;
+
+var insertUser;
+
 // function to decrement the timer and lose when it hits 0
 function startTimer() {
   countdown = setInterval(function() {
     secondsRemaining--;
     timerCountEl.textContent = "Time Remaining: " + secondsRemaining;
-    if (secondsRemaining === 0) {
+    // If time hits 0, end the game
+    if (secondsRemaining <= 0) {
       clearInterval(countdown);
       endGame();
     }
@@ -68,8 +78,11 @@ function checkAnswer(event) {
   if (event.target.textContent === correctAnswer) {
     winCounter++;
   } else {
+    // subtract time from the clock if wrong answer
     lossCounter++;
+    secondsRemaining -= 10;
   }
+
   // console.log(event.target.textContent)   // answer user clicks on
   // console.log(correctAnswer);   // correct answer
   
@@ -114,12 +127,43 @@ function startQuiz() {
 function endGame() {
   document.getElementById("quiz-box").style.display = "none";
   document.getElementById("hiScore-page").style.display = "block";
+  hiScoreEl.textContent = "Your Score: " + winCounter + " / 5";
   
 }
 
+// what I to store in local storage
+function saveForm() {
+  usernameInput = initFormEl.value;
+  insertUser = {
+    user: usernameInput,
+    score: winCounter
+  }
+}
 
+function pull() {
+  save = JSON.parse(localStorage.getItem('hiScore'));
+}
+
+// function to store in local storage
+function store() {
+  if (save == null) {
+    save = [];
+  }
+  newSave = insertUser;
+  save.push(newSave);
+  localStorage.setItem("hiScore", JSON.stringify(save));
+}
 
 // event listener for the start button
 startButtonEl.addEventListener("click", function() {
     startQuiz();
 });
+
+// event listener for pressing enter
+initFormEl.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    saveForm();
+    pull();
+    store();
+  }
+})
