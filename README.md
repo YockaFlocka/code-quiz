@@ -1,13 +1,9 @@
-# Web APIs: Code Quiz
-
-Build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
+# Web APIs: Code Quiz 
 
 ## User Story
 
 ```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+Build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface.
 ```
 
 ## Acceptance Criteria
@@ -30,7 +26,7 @@ THEN I can save my initials and my score
 
 The following link will lead you to a live version of the webpage:
 
-![Coding Quiz](https://yockaflocka.github.io/code-quiz/)
+[Coding Quiz](https://yockaflocka.github.io/code-quiz/)
 
 Here is a screenshot of the Quiz!
 
